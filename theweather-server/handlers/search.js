@@ -3,8 +3,10 @@ const axios = require('axios');
 
 exports.current = async function(req, res, next) {
     try {
-        // let location = await (req.body.location);
-        let currentWeather = await axios.get(`https://api.darksky.net/forecast/${apiKey}/33.5207,-86.8025`)
+        let location = req.query.location;
+        let lat = req.query.latitude;
+        let lon = req.query.longitude;
+        let currentWeather = await axios.get(`https://api.darksky.net/forecast/${apiKey}/${lat},${lon}`)
         .then(res => {
             const weatherObject = {
                 temperature: res.data.currently.temperature,
@@ -21,6 +23,14 @@ exports.current = async function(req, res, next) {
         return next(error);
     }
 };
+
+exports.location = async function(req, res, next) {
+    try {
+        
+    } catch (error) {
+        return next(error);
+    }
+}
 
 exports.hourly = async function(req, res, next) {
     try {
