@@ -1,10 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { current, hourly, daily, location } = require('../handlers/search');
+const { search } = require('../handlers/search');
 
-router.get('/current', current);
-router.get('/hourly', hourly);
-router.get('/daily', daily);
-router.get('/location', location);
+router.get('/search', search);
 
 module.exports = router;
