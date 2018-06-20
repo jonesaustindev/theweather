@@ -1,7 +1,6 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const DarkSkyApi = require('dark-sky-api');
 const errorHandler = require('./handlers/error');
 const searchRoutes = require('./routes/search');
 const bodyParser = require('body-parser');
@@ -14,11 +13,6 @@ app.use(bodyParser.json());
 
 // darkskyapi config //
 apiKey = process.env.API_KEY;
-DarkSkyApi.proxy = true;
-DarkSkyApi.initialize();
-
-// Google geolocation config //
-googleApiKey = process.env.GOOGLE_API_KEY;
 
 // port //
 const port = process.env.PORT || 5000;

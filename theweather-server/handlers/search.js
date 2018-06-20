@@ -1,10 +1,10 @@
 require('dotenv').config();
 const axios = require('axios');
+const moment = require('moment');
 
 
 exports.search = async function(req, res, next) {
     try {
-        let location = req.query.location;
         let lat = req.query.latitude;
         let lon = req.query.longitude;
         let currentWeather = await axios.get(`https://api.darksky.net/forecast/${apiKey}/${lat},${lon}`)
@@ -13,18 +13,9 @@ exports.search = async function(req, res, next) {
                 // current //
                 currentTemperature: res.data.currently.temperature,
                 currentSummary: res.data.currently.summary,
-                currentTime: res.data.currently.time,
-                currentIcon: res.data.currently.icon,
-                currentPrecipType: res.data.currently.precipType,
-                currentPrecipProbability: res.data.currently.precipProbability,
-                // hourly //
-                hourSummary: res.data.hourly.summary,
-                hourIcon: res.data.hourly.icon,
-                hourForecast: res.data.hourly.data.map(data => data),
-                // week //
-                weekSummary: res.data.daily.summary,
-                weekIcon: res.data.daily.icon,
-                weekForecast: res.data.daily.data.map(data => data)
+                currentTime: moment(res.data.minutely.data.time).format('dddd MMM Do'),
+                currentIcon: res.data.currently.icon.replace(/-/g, '_').toUpperCase(),
+                currentPrecipType: res.data.currently.precipType
             }
             return weatherObject;
         });
