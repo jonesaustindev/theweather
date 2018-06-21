@@ -4,8 +4,8 @@
         "/**": "index.html"
     },
     "proxies": {
-        "/api": {
-            "origin": "https://still-lowlands-22647.herokuapp.com"
+        "/api/": {
+            "origin": "${API_URL}"
         }
     }
 }
