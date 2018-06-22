@@ -2,9 +2,9 @@
   "name": "theweather-client",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://theweather-application.herokuapp.com",
   "dependencies": {
     "axios": "^0.18.0",
+    "gh-pages": "^1.2.0",
     "npm": "^6.1.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
