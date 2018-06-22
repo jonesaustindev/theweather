@@ -2,6 +2,7 @@
   "name": "theweather-client",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://theweather-application.herokuapp.com",
   "dependencies": {
     "axios": "^0.18.0",
     "npm": "^6.1.0",
