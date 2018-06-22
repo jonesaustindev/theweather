@@ -1,9 +1,0 @@
-{
-    "root": "build/",
-    "routes": {
-        "/**": "index.html"
-    },
-    "proxies": {
-        "origin": "https://still-lowlands-22647.herokuapp.com"
-    }
-}
