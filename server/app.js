@@ -18,16 +18,18 @@ apiKey = process.env.API_KEY;
 // port //
 const port = process.env.PORT || 5000;
 
-app.use(express.static(__dirname));
-
-// app.get('*', (req, res) => {
-//     res.sendFile(path.resolve(__dirname, 'index.html'));
-// });
+// serve static files //
+app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 
 // api call //
 app.use('/api', 
     searchRoutes
 );
+
+// any other requests //
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));
+});
 
 // errors //
 app.use(function(req, res, next){
